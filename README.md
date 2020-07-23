@@ -1,2 +1,2 @@
-# NFLCalculator
-NFL calculator with Justin Cole Tim
+# NBACalculator
+NBA calculator with Justin Cole Tim

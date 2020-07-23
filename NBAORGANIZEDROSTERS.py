@@ -25,7 +25,7 @@ while page < numPages:
     for player in playerList["data"]:
         playerInfo = player["team"]
         abbreviation = playerInfo["abbreviation"]
-        name = player["first_name"] + " " + player["last_name"]
+        name = player["first_name"] + " " + player["last_name"] + " " + str(player["id"])
         if abbreviation in roster:
             roster[abbreviation].append(name)
         else:

@@ -16,7 +16,7 @@ meta = getMetaJson["meta"]
 numPages = meta["total_pages"]
 
 
-while page < numPages:
+while page <= numPages:
     newLink = linkStart + str(page) + linkEnd
 
     response = requests.get(newLink).text

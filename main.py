@@ -3,9 +3,10 @@ import os
 from PlayerRoster import PlayerRoster
 
 def main():
-    teamRoster = {}
-    roster = createPlayerRoster(teamRoster)
-    print(roster)
+    roster = PlayerRoster()
+    x = roster.createPlayerRoster()
+    print(x)
+    
 
 if __name__ == "__main__":
 	main()

@@ -2,7 +2,7 @@ import requests
 import json
 
 class PlayerRoster():
-    def __init__(self, teamRoster):
+    def __init__(self):
         self.__teamRoster = {}
 
 
@@ -32,8 +32,10 @@ class PlayerRoster():
                 team = player["team"]
                 abbreviation = team["abbreviation"]
                 playerID = player["id"]
-                name = player["first_name"] + " " + player["last_name"] + " " + str(player["id"])
                 self.getPlayerStats(valueDict, str(playerID), playerValue)
+                # name = player["first_name"] + " " + player["last_name"] + " " + str(player["id"])
+                # name = [first name, last name, id, playerValue]
+                name = [player["first_name"], player["last_name"], player["id"], playerValue]
                 if playerValue > 0:
                     if abbreviation in self.__teamRoster:
                         self.__teamRoster[abbreviation].append(name)
@@ -41,7 +43,8 @@ class PlayerRoster():
                         self.__teamRoster[abbreviation] = [name]
             page += 1   
 
-        print(self.__teamRoster)
+        # print(self.__teamRoster)
+        return self.__teamRoster
 
 
     # GETS THE STATS AND OVERALL VALUE OF A PLAYER BASED ON ID

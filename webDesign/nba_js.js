@@ -1,3 +1,4 @@
+/* Nba external Js link */
 var preLoad;
 function loading() {
   preLoad = setTimeout(showPage, 3000);

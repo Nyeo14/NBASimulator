@@ -1,4 +1,6 @@
- /* Handles loader itself (default loader)*/
+/* Nba External CSS link */
+
+/* Used for Website loading */
  #loader {
     position: absolute;
     left: 50%;
@@ -23,7 +25,6 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  /* Add animation to "page content" */
   .animate-bottom {
     position: relative;
     -webkit-animation-name: animatebottom;
@@ -80,10 +81,10 @@
     transform: translate(-50%, -50%);
   }
   .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
   }
   /* Handles navigation bar aspects */
   .topnav {
@@ -111,12 +112,14 @@
     background-color: #4CAF50;
     color: white;
   }
+
   /* Handles all paragraph aspects */
   p.ex1 {
     margin-right: 200px;
     margin-left: 200px;
     line-height: 2.2;
   }
+
   /* Gets rid of white space */
   .img-box img{
           display: block;

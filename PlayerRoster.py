@@ -1,3 +1,4 @@
+# returns a dictionary {position: [player, id, overallpoints]}
 import requests
 import json
 import time
@@ -41,11 +42,12 @@ class PlayerRoster():
                 name = [player["first_name"], player["last_name"], player["id"], playerValue]
                 if playerValue > 0:
                     if abbreviation in self.__teamRoster:
-                        self.__teamRoster[abbreviation].append(name)
-                        print(name)
+                        self.__teamRoster[position].append(name)
+                        # print(name)
                     else:
-                        self.__teamRoster[abbreviation] = [name]
-                        print(name)
+                        self.__teamRoster[position] = [name]
+                        # print(name)
+                print(self.__teamRoster)
             page += 1   
 
         #print(self.__teamRoster)
@@ -71,7 +73,7 @@ class PlayerRoster():
         # Calculate overall player value (NEED FUNCTION TO CALCULATE THIS)
         playerValue = self.calculatePlayerValue(statDict)
         
-        return playerValue
+        return int(playerValue)
 
 
 

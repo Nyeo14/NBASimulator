@@ -5,7 +5,8 @@ from PlayerRoster import PlayerRoster
 def main():
     roster = PlayerRoster()
     x = roster.createPlayerRoster()
-    print(x)
+    output = roster.getRecords(x)
+    print(output)
     
 
 if __name__ == "__main__":

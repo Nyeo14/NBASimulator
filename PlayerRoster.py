@@ -60,7 +60,7 @@ class PlayerRoster():
         # Getting information from API (MAY NEED TO GET FROM 2017 AS WELL TO ACCOUNT FOR ROOKIES)
         requestString = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]="
         requestString = requestString + player_id
-        # response = requests.get("https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=448")
+        # response = requests.get("https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]=448")
         response = requests.get(requestString)
         playerStats = response.json()
 

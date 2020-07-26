@@ -11,7 +11,7 @@ statDict = {}
 totalDict = {}
 
 # Getting information from API
-response = requests.get("https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=140")
+response = requests.get("https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=256")
 playerStats = response.json()
 
 # Creating a dictionary with simple stats
@@ -24,7 +24,10 @@ print(statDict)
 
 # Creating a dictionary with overall player value
 for key, value in statDict.items():
-    fg2_pct = (value[7]-value[9]) / (value [8] - value[10])
+    try:
+        fg2_pct = (value[7]-value[9]) / (value [8] - value[10])
+    except ZeroDivisionError:
+        fg2_pct = value[11]
     fg2m = value[7] - value[9]
     adjfg2m = (1+(fg2_pct - leagueAvg2PtPct)) * fg2m
     adjfg3m = (1+(value[11]-leagueAvg3PtPct)) * value[9]

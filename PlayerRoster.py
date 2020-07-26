@@ -51,6 +51,47 @@ class PlayerRoster():
         #print(self.__teamRoster)
         return self.__teamRoster
 
+    #I CAN SPLIT INTO FUNCTION AND CLEAN UP LATER IT BE LIKE TO CALCULATE THE RECORD OF EACH TEAM ALL CAPS NO FICTION
+    def getRecords(self, calculatedRosters: dict):
+        page = 1
+        linkStart = "https://www.balldontlie.io/api/v1/games?seasons[]=2018&postseason=false&page="
+        linkEnd = "&per_page=100"
+        getMeta = requests.get("https://www.balldontlie.io/api/v1/games?seasons[]=2018&postseason=false&page=1&per_page=100").text
+        getMetaJson = json.loads(getMeta)
+        meta = getMetaJson["meta"]
+        numPages = meta["total_pages"]
+
+        predictedRecord = {}
+        getTeams = requests.get("https://www.balldontlie.io/api/v1/teams").text
+        getTeamsJson = json.loads(getTeams)
+        for team in getTeamsJson["data"]:
+            predictedRecord[team["abbreviation"]] = [0, 0]
+
+        while page <= numPages:
+            newLink = linkStart + str(page) + linkEnd
+            response = requests.get(newLink).text
+        
+            allGamesJson = json.loads(response)
+            for game in allGamesJson["data"]:
+                homeData = game["home_team"]
+                visitorData = game["visitor_team"]
+                homeTeam = calculatedRosters[homeData["abbreviation"]]
+                visitorTeam = calculatedRosters[visitorData["abbreviation"]]
+                homeScore = 0
+                visitorScore = 0
+                for player in homeTeam:
+                    homeScore += player[3]
+                for player in visitorTeam:
+                    visitorScore += player[3]
+                if homeScore > visitorScore:
+                    predictedRecord[homeData["abbreviation"]][0] = predictedRecord[homeData["abbreviation"]][0] + 1
+                    predictedRecord[visitorData["abbreviation"]][1] = predictedRecord[visitorData["abbreviation"]][1] + 1
+                else:
+                    predictedRecord[visitorData["abbreviation"]][0] = predictedRecord[visitorData["abbreviation"]][0] + 1
+                    predictedRecord[homeData["abbreviation"]][1] = predictedRecord[homeData["abbreviation"]][1] + 1
+            page += 1
+        return predictedRecord
+
 
     # GETS THE STATS AND OVERALL VALUE OF A PLAYER BASED ON ID
     def getPlayerStats(self, valueDict: dict, player_id: str, playerValue) -> float:
@@ -72,3 +113,5 @@ class PlayerRoster():
             playerValue = value[0] + value[1]*0.75 + value[2]*0.25
         
         return int(playerValue)
+
+        

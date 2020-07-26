@@ -28,22 +28,27 @@ class PlayerRoster():
             playerList = json.loads(response)
             
             for player in playerList["data"]:
+                #print(player["id"], player["team"]["abbreviation"])
                 playerValue = 0
                 team = player["team"]
                 abbreviation = team["abbreviation"]
                 playerID = player["id"]
-                self.getPlayerStats(valueDict, str(playerID), playerValue)
-                # name = player["first_name"] + " " + player["last_name"] + " " + str(player["id"])
+                position = player["position"]
+                if position != "":
+                    playerValue = self.getPlayerStats(valueDict, str(playerID), playerValue)
                 # name = [first name, last name, id, playerValue]
                 name = [player["first_name"], player["last_name"], player["id"], playerValue]
+                #print(name)
                 if playerValue > 0:
                     if abbreviation in self.__teamRoster:
                         self.__teamRoster[abbreviation].append(name)
+                        print(name)
                     else:
                         self.__teamRoster[abbreviation] = [name]
+                        print(name)
             page += 1   
 
-        # print(self.__teamRoster)
+        #print(self.__teamRoster)
         return self.__teamRoster
 
 
@@ -51,10 +56,10 @@ class PlayerRoster():
     def getPlayerStats(self, valueDict: dict, player_id: str, playerValue) -> float:
         statDict = {}
 
-        # Getting information from API
+        # Getting information from API (MAY NEED TO GET FROM 2017 AS WELL TO ACCOUNT FOR ROOKIES)
         requestString = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]="
         requestString = requestString + player_id
-        # response = requests.get("https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=666786")
+        # response = requests.get("https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=448")
         response = requests.get(requestString)
         playerStats = response.json()
 
@@ -65,5 +70,7 @@ class PlayerRoster():
         # Calculate overall player value (NEED FUNCTION TO CALCULATE THIS)
         for value in statDict.values():
             playerValue = value[0] + value[1]*0.75 + value[2]*0.25
+        
+        #print(statDict, playerValue)
 
-        return playerValue
+        return int(playerValue)

@@ -1,5 +1,4 @@
 /* Nba External CSS link */
-
 /* Used for Website loading */
  #loader {
     position: absolute;
@@ -71,13 +70,7 @@
   .left2{
     position: absolute;
     top: 35%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-  }
-  .left3{
-    position: absolute;
-    top: 50%;
-    left: 20%;
+    left: 5%;
     transform: translate(-50%, -50%);
   }
   .center {
@@ -125,3 +118,8 @@
           display: block;
   }
 
+  .fade {
+    margin: 50px;
+    padding: 50px;
+    opacity: 1;
+  }

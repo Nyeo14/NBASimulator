@@ -3,10 +3,16 @@
 <title>18' - 19' Nba game calculator</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- CSS for font-->
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 <!-- CSS for <style>-->
 <link href='nba_css.css' rel='stylesheet' type='text/css'>
+
+<!-- J query-->
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
 
 <!-- Main Document -->
 <body onload="loading()" style = "margin: 0px;background-color:black;">
@@ -17,35 +23,24 @@
   <div class="topnav">
     <ul style="padding: 0;font-family: 'Lato', sans-serif;">
       <a href="#HOME">HOME</a>
-      <a href="#INTRO">INTRO</a>
-      <a href="#OBJECTIVE">OBJECTIVE</a>
+      <a href="#OBJECTIVE">GOAL</a>
       <a href="#FINDINGS">FINDINGS</a>
     </ul>
   </div>
   <!-- HOME -->
+
   <div id="HOME" class="container">
     <div class="img-box">
-      <img src="https://www.beaconjournal.com/storyimage/OH/20191221/SPORTS/191229810/AR/0/AR-191229810.jpg" style="width:100%">
+      <img class = "center" src="https://www.beaconjournal.com/storyimage/OH/20191221/SPORTS/191229810/AR/0/AR-191229810.jpg" style="width:75%">
     </div>
     <div class="centered"><h3>Cleveland, USA</h3>
     </div>
-    <div class="left2"> <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/764191621&color=%23e600ef&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-      <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/lil-baby-4pf" title="Lil Baby" target="_blank" style="color: #cccccc; text-decoration: none;">Lil Baby</a> · <a href="https://soundcloud.com/lil-baby-4pf/how" title="How" target="_blank" style="color: #cccccc; text-decoration: none;">How</a>
-      </div>
-    </div>
   </div>
-  <!-- INTRODUCTION -->
-  <div id="INTRO" class="container">
-    <div class="img-box">
-      <img src= https://nssdata.s3.amazonaws.com/images/galleries/17942/la-sp-2018-19-nba-season-preview-20181014.jpg style="width:100%"  style="height:120%">
-    </div>
-    <div class="centered2">
-      <h2 style="text-align:center;font-size:165%;color:WHITE;font-family: 'Lato', sans-serif;"><b>2018-2019 NBA GAME CALCULATOR</b></h2>
-    </div>
-    <p class="left" style="line-height: 2;font-family: 'Lato', sans-serif;"> Justin Lu <br> Timothy Tai <br> Nate Yeo <br> Cole Douglas </p>
-  </div>
+
   <!-- OBJECTIVE -->
-  <div id="OBJECTIVE" style="background-color:black;">
+<div id="OBJECTIVE"></div>
+<div class="fade">
+  <div style="background-color:black;">
     <h2 style="text-align:center;font-family:'Lato', sans-serif;;font-size:165%;color:WHITE"><b>METHODOLOGY</b></h2>
     <p class="ex1" style="text-align:center;font-family:'Lato', sans-serif;font-size:97%;color:WHITE"> 
         The main objective of this project
@@ -57,8 +52,10 @@
         by analyzing just the statistics of an entire team combined to truly see what team was better.
     </p>
   </div>
+</div>
   <!-- FINDINGS -->
   <div id="FINDINGS" style="background-color:black;"> 
+    <div class="fade">
     <h2 style="text-align:center;font-family:'Lato', sans-serif;;font-size:165%;color:WHITE"><b>FINDINGS</b></h2>
     <p class="ex1" style="text-align:center;font-family:'Lato', sans-serif;font-size:97%;color:WHITE"> 
       Example :
@@ -67,16 +64,20 @@
       true shooting percentages as a team correleated to higher chances of winning whereas blocks did not contribute as much success
       as perceived normally.
     </p>
+  </div>
   <!-- Example data-->
     <img class="center" src= https://d3i71xaburhd42.cloudfront.net/52929797b95842be29ae20fa440a8409bdbd7af1/2-Figure1-1.png style="width:45%"  style="height:55%">
+  <div class="fade">
     <p class="ex1" style="text-align:center;font-family:'Lato', sans-serif;font-size:97%;color:WHITE"> 
     Example : Another interesting point unconvered in our analysis was that teams with high defensive efficiency or high offensive efficiency
     on average beat teams with normal efficiency on either the defensive or offensive ends. However when a team with high defensive efficiency went
     against a team with high offensive efficieny, most of the time the team with high offensive efficiency wins, further supporting
     the modern era of a high scoring offense in the Nba.
     </p>
+  </div>
     <img class="center" src= https://cdn.vox-cdn.com/thumbor/gie6kGqabPoU4ZaDFTcIGNjc-8w=/0x0:2573x3859/1200x800/filters:focal(1013x753:1423x1163)/cdn.vox-cdn.com/uploads/chorus_image/image/58201027/usa_today_10519601.0.jpg style="width:45%"  style="height:55%">
   </div>
+
 </div>
 <!-- Handles loading scripts-->
   <script src="nba_js.js"></script>

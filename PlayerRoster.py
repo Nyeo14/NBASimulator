@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 
 class PlayerRoster():
     def __init__(self):
@@ -27,6 +28,7 @@ class PlayerRoster():
             response = requests.get(newLink).text
             playerList = json.loads(response)
             
+
             for player in playerList["data"]:
                 playerValue = 0
                 team = player["team"]
@@ -34,15 +36,16 @@ class PlayerRoster():
                 playerID = player["id"]
                 position = player["position"]
                 if position != "":
+                    time.sleep(1)
                     playerValue = self.getPlayerStats(valueDict, str(playerID), playerValue)
                 name = [player["first_name"], player["last_name"], player["id"], playerValue]
                 if playerValue > 0:
                     if abbreviation in self.__teamRoster:
                         self.__teamRoster[abbreviation].append(name)
-                        print(name)
+                        # print(name)
                     else:
                         self.__teamRoster[abbreviation] = [name]
-                        print(name)
+                        # print(name)
             page += 1   
 
         #print(self.__teamRoster)
@@ -52,6 +55,7 @@ class PlayerRoster():
     # GETS THE STATS AND OVERALL VALUE OF A PLAYER BASED ON ID
     def getPlayerStats(self, valueDict: dict, player_id: str, playerValue) -> float:
         statDict = {}
+
         # Getting information from API (MAY NEED TO GET FROM 2017 AS WELL TO ACCOUNT FOR ROOKIES)
         requestString = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]="
         requestString = requestString + player_id

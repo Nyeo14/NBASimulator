@@ -8,18 +8,18 @@ class PlayerRoster():
 
     # CREATES THE ROSTER (A DICTIONARY) {TEAM: PLAYERS}
     def createPlayerRoster(self):
-        #used to creat newLink to iterate through pages
+        # used to create newLink to iterate through pages
         page = 1
         linkStart = "https://www.balldontlie.io/api/v1/players?page="
         linkEnd = "&per_page=100"
 
-        #gets number of total pages
+        # gets number of total pages
         getMeta = requests.get("https://www.balldontlie.io/api/v1/players?page=1&per_page=100").text
         getMetaJson = json.loads(getMeta)
         meta = getMetaJson["meta"]
         numPages = meta["total_pages"]
 
-        #adds players to dictionary {team: name id, name id}
+        # adds players to dictionary {team: name id, name id}
         while page <= numPages:
             valueDict = {}
             newLink = linkStart + str(page) + linkEnd
@@ -28,7 +28,6 @@ class PlayerRoster():
             playerList = json.loads(response)
             
             for player in playerList["data"]:
-                #print(player["id"], player["team"]["abbreviation"])
                 playerValue = 0
                 team = player["team"]
                 abbreviation = team["abbreviation"]
@@ -36,9 +35,7 @@ class PlayerRoster():
                 position = player["position"]
                 if position != "":
                     playerValue = self.getPlayerStats(valueDict, str(playerID), playerValue)
-                # name = [first name, last name, id, playerValue]
                 name = [player["first_name"], player["last_name"], player["id"], playerValue]
-                #print(name)
                 if playerValue > 0:
                     if abbreviation in self.__teamRoster:
                         self.__teamRoster[abbreviation].append(name)
@@ -55,7 +52,6 @@ class PlayerRoster():
     # GETS THE STATS AND OVERALL VALUE OF A PLAYER BASED ON ID
     def getPlayerStats(self, valueDict: dict, player_id: str, playerValue) -> float:
         statDict = {}
-
         # Getting information from API (MAY NEED TO GET FROM 2017 AS WELL TO ACCOUNT FOR ROOKIES)
         requestString = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]="
         requestString = requestString + player_id
@@ -71,6 +67,4 @@ class PlayerRoster():
         for value in statDict.values():
             playerValue = value[0] + value[1]*0.75 + value[2]*0.25
         
-        #print(statDict, playerValue)
-
         return int(playerValue)

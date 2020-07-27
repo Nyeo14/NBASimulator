@@ -40,7 +40,7 @@ function getOutcome(players1, players2, file?) {
     if file.content == players2
         team1 = players2.value + team2
     if (team1 == team2) {
-        lastResult.textContent = 'Tie game!';
+        lastResult.textContent = 'We going to overtime!';
     } else if (team1 > team2) {
         lastResult.textContent = 'Team1 wins!';
     } else if (team2 > team1) {

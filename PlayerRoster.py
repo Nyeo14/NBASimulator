@@ -42,7 +42,7 @@ class PlayerRoster():
                     playerValue = playerValue * 1.024
                 elif position == "F":
                     playerValue = playerValue * 1.04
-                elif position == "c":
+                elif position == "C":
                     playerValue = playerValue * .8554
                 name = [player["first_name"], player["last_name"], player["id"], playerValue]
                 if playerValue > 50:

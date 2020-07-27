@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Nba Head to Head</title>
+        <!-- Meta-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Justin Lu">
+        <meta name="description" content="Head to Head aims to 
+        simulate custom teams filled with popular Nba players and using
+        data from the Ball dont lie API and custom metrics, return the outcome.">
+        <meta property="og:description" content="Head to Head aims to 
+        simulate custom teams filled with popular Nba players and using
+        data from the Ball dont lie API and custom metrics, return the outcome.">
+        <meta property="og:title" content="Head to Head">
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel="stylesheet">
+         <!-- CSS external -->
+        <link href='sim_css.css' rel='stylesheet' type='text/css'>
+        <!-- J query-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <!-- JS external-->
+        <script src="sim_js.js"></script>
+    </head>
+    <!-- Main Document -->
+    <body>
+        <header>
+            <h1> NBA HEAD TO HEAD</h1>
+        </header>
+        <main>
+            <!-- 
+            <img src="https://wallpaperplay.com/walls/full/3/d/6/109609.jpg" width="400"
+                height="341" alt="Nike and Nba logo" title="© Nba © Nike"
+                >
+            <div class="box">Testing.</div>
+            -->
+            
+            <!-- Drop down menu-->
+            <div class ="container">
+                <div>
+                    <br>
+                    <!-- Point guard -->
+                    <div>
+                        <label for="pg-select">Select a point guard:</label>
+                        <select name="pg" id="pg-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="stephen curry">Stephen Curry</option>
+                            <option value="russel westbrook">Russel Westbrook</option>
+                            <option value="kemba walker">Kemba Walker</option>
+                            <option value="lonzo ball">Lonzo Ball</option>
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Shooting guard -->
+                    <div>
+                        <label for="sg-select">Select a shooting guard:</label>
+                        <select name="sg" id="sg-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="james harden">James Harden</option>
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Small Forward -->
+                    <div>
+                        <label for="sf-select">Select a small forward:</label>
+                        <select name="sf" id="sf-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="lebron james">Lebron James</option>
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Power Forward-->
+                    <div>
+                        <label for="pf-select">Select a power forward:</label>
+                        <select name="pf" id="pf-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="anthony davis">Anthony Davis</option>
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Center-->
+                    <div>
+                        <label for="c-select">Select a center:</label>
+                        <select name="c" id="c-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="joel embiid">Joel Embiid</option>
+                        </select>
+                    </div>
+                </div>    
+                <div style="text-align:right;">
+                    <br>
+                    <!-- Point guard -->
+                    <div>
+                        <label for="pg-select">Select a point guard:</label>
+                        <select name="pg" id="pg-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="stephen curry">Stephen Curry</option>
+                            <option value="russel westbrook">Russel Westbrook</option>
+                            <option value="kemba walker">Kemba Walker</option>
+                            <option value="lonzo ball">Lonzo Ball</option>
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Shooting guard -->
+                    <div>
+                        <label for="sg-select">Select a shooting guard:</label>
+                        <select name="sg" id="sg-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="james harden">James Harden</option>
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Small Forward -->
+                    <div>
+                        <label for="sf-select">Select a small forward:</label>
+                        <select name="sf" id="sf-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="lebron james">Lebron James</option>
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Power Forward-->
+                    <div>
+                        <label for="pf-select">Select a power forward:</label>
+                        <select name="pf" id="pf-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="anthony davis">Anthony Davis</option>
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Center-->
+                    <div>
+                        <label for="c-select">Select a center:</label>
+                        <select name="c" id="c-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="joel embiid">Joel Embiid</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </main> 
+        <footer>
+            <p> Data sourced from
+                <a href="https://www.balldontlie.io/" title="Up to date statistics on the Nba">
+                    balldontlieAPI </a>.
+            </p>
+        </footer>
+    </body>
+</html>

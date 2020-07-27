@@ -54,8 +54,8 @@ class PlayerRoster():
                         # print(name)
                     #print(self.__teamRoster)
             page += 1   
-        #with open('playerRoster.json', 'w') as outfile:
-        #   outfile.write(json.dumps(self.__teamRoster))
+        with open('playerRoster.txt', 'w') as outfile:
+          outfile.write(json.dumps(self.__teamRoster))
         #print(self.__teamRoster)
         return self.__teamRoster
 

@@ -32,23 +32,30 @@ class PlayerRoster():
 
             for player in playerList["data"]:
                 playerValue = 0
-                team = player["team"]
+                #team = player["team"]
                 playerID = player["id"]
-                position = player["position"]
+                position = player["position"][:1]
                 if position != "":
                     time.sleep(1)
                     playerValue = self.getPlayerStats(valueDict, str(playerID), playerValue)
+                if position == "G":
+                    playerValue = playerValue * 1.024
+                elif position == "F":
+                    playerValue = playerValue * 1.04
+                elif position == "c":
+                    playerValue = playerValue * .8554
                 name = [player["first_name"], player["last_name"], player["id"], playerValue]
-                if playerValue > 0:
+                if playerValue > 50:
                     if position in self.__teamRoster:
                         self.__teamRoster[position].append(name)
                         # print(name)
                     else:
                         self.__teamRoster[position] = [name]
                         # print(name)
-                    print(self.__teamRoster)
+                    #print(self.__teamRoster)
             page += 1   
-
+        #with open('playerRoster.json', 'w') as outfile:
+        #   outfile.write(json.dumps(self.__teamRoster))
         #print(self.__teamRoster)
         return self.__teamRoster
 

@@ -33,7 +33,6 @@ class PlayerRoster():
             for player in playerList["data"]:
                 playerValue = 0
                 team = player["team"]
-                abbreviation = team["abbreviation"]
                 playerID = player["id"]
                 position = player["position"]
                 if position != "":
@@ -41,13 +40,13 @@ class PlayerRoster():
                     playerValue = self.getPlayerStats(valueDict, str(playerID), playerValue)
                 name = [player["first_name"], player["last_name"], player["id"], playerValue]
                 if playerValue > 0:
-                    if abbreviation in self.__teamRoster:
+                    if position in self.__teamRoster:
                         self.__teamRoster[position].append(name)
                         # print(name)
                     else:
                         self.__teamRoster[position] = [name]
                         # print(name)
-                print(self.__teamRoster)
+                    print(self.__teamRoster)
             page += 1   
 
         #print(self.__teamRoster)

@@ -17,30 +17,23 @@
         <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel="stylesheet">
          <!-- CSS external -->
         <link href='sim_css.css' rel='stylesheet' type='text/css'>
-        <!-- J query-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <!-- JS external-->
-        <script src="sim_js.js"></script>
     </head>
     <!-- Main Document -->
     <body>
+        <img src=https://1000logos.net/wp-content/uploads/2017/04/NBA-Logo.png width="350" height="160" 
+        alt="Nba logo" title="©Nba">
         <header>
-            <h1> NBA HEAD TO HEAD</h1>
+            <h1>HEAD TO HEAD</h1>
         </header>
         <main>
-            <!-- 
-            <img src="https://wallpaperplay.com/walls/full/3/d/6/109609.jpg" width="400"
-                height="341" alt="Nike and Nba logo" title="© Nba © Nike"
-                >
-            <div class="box">Testing.</div>
-            -->
-            
             <!-- Drop down menu-->
             <div class ="container">
+                <!-- column 1-->
                 <div>
-                    <br>
+                    <span class="team"><strong>Team 1</strong></span> 
                     <!-- Point guard -->
-                    <div>
+                    <div class="dropdown">
                         <label for="pg-select">Select a point guard:</label>
                         <select name="pg" id="pg-select">
                             <option value="">--Please choose an option--</option>
@@ -50,47 +43,46 @@
                             <option value="lonzo ball">Lonzo Ball</option>
                         </select>
                     </div>
-                    <br>
                     <!-- Shooting guard -->
-                    <div>
+                    <div class="dropdown">
                         <label for="sg-select">Select a shooting guard:</label>
                         <select name="sg" id="sg-select">
                             <option value="">--Please choose an option--</option>
                             <option value="james harden">James Harden</option>
                         </select>
                     </div>
-                    <br>
                     <!-- Small Forward -->
-                    <div>
+                    <div class="dropdown">
                         <label for="sf-select">Select a small forward:</label>
                         <select name="sf" id="sf-select">
                             <option value="">--Please choose an option--</option>
                             <option value="lebron james">Lebron James</option>
                         </select>
                     </div>
-                    <br>
                     <!-- Power Forward-->
-                    <div>
+                    <div class="dropdown">
                         <label for="pf-select">Select a power forward:</label>
                         <select name="pf" id="pf-select">
                             <option value="">--Please choose an option--</option>
                             <option value="anthony davis">Anthony Davis</option>
                         </select>
                     </div>
-                    <br>
                     <!-- Center-->
-                    <div>
+                    <div class="dropdown">
                         <label for="c-select">Select a center:</label>
                         <select name="c" id="c-select">
                             <option value="">--Please choose an option--</option>
                             <option value="joel embiid">Joel Embiid</option>
                         </select>
                     </div>
-                </div>    
+                </div>   
+                <!-- End column 1--> 
+                
+                <!-- column 2--> 
                 <div style="text-align:right;">
-                    <br>
+                    <span class="team"><strong>Team 2</strong></span> 
                     <!-- Point guard -->
-                    <div>
+                    <div class="dropdown">
                         <label for="pg-select">Select a point guard:</label>
                         <select name="pg" id="pg-select">
                             <option value="">--Please choose an option--</option>
@@ -100,36 +92,33 @@
                             <option value="lonzo ball">Lonzo Ball</option>
                         </select>
                     </div>
-                    <br>
                     <!-- Shooting guard -->
-                    <div>
+                    <div class="dropdown">
                         <label for="sg-select">Select a shooting guard:</label>
                         <select name="sg" id="sg-select">
                             <option value="">--Please choose an option--</option>
                             <option value="james harden">James Harden</option>
                         </select>
                     </div>
-                    <br>
                     <!-- Small Forward -->
-                    <div>
+                    <div class="dropdown">
                         <label for="sf-select">Select a small forward:</label>
                         <select name="sf" id="sf-select">
                             <option value="">--Please choose an option--</option>
                             <option value="lebron james">Lebron James</option>
+                            <option value="justin lu">Justin Lu</option>
                         </select>
                     </div>
-                    <br>
                     <!-- Power Forward-->
-                    <div>
+                    <div class="dropdown">
                         <label for="pf-select">Select a power forward:</label>
                         <select name="pf" id="pf-select">
                             <option value="">--Please choose an option--</option>
                             <option value="anthony davis">Anthony Davis</option>
                         </select>
                     </div>
-                    <br>
                     <!-- Center-->
-                    <div>
+                    <div class="dropdown">
                         <label for="c-select">Select a center:</label>
                         <select name="c" id="c-select">
                             <option value="">--Please choose an option--</option>
@@ -137,13 +126,20 @@
                         </select>
                     </div>
                 </div>
+                <!-- End column 2-->
             </div>
+            <div class="buttContainer">
+                <div class="buttCenter">
+                    <button type="button"><span class="custom">Simulate outcome</span></button>
+                </div>
+            </div>        
         </main> 
         <footer>
             <p> Data sourced from
                 <a href="https://www.balldontlie.io/" title="Up to date statistics on the Nba">
-                    balldontlieAPI </a>.
+                    balldontlieAPI </a>
             </p>
         </footer>
+        <script src='sim_js.js'></script>
     </body>
 </html>

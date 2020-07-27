@@ -1,8 +1,7 @@
-/* Loading screen */
-/* Loading screen (fin) */
+// External js for Head to Head
+// Justin Lu
 
-
-/* dropdown content */
+// Dropdown usage
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -22,4 +21,31 @@ function filterFunction() {
         }
     }
 }
-/* dropdown content (fin) */
+
+// Outcome statement
+const button = document.querySelector('button');
+button.onclick = function() {
+  alert('Example : Team 1 Wins!');
+}
+
+
+/*
+function getOutcome(players1, players2, file?) {
+
+    let players1 = [];
+    let players2 = [];
+    var team1, team2;
+    if file.content == players1
+        team1 = players1.value + team1
+    if file.content == players2
+        team1 = players2.value + team2
+    if (team1 == team2) {
+        lastResult.textContent = 'Tie game!';
+    } else if (team1 > team2) {
+        lastResult.textContent = 'Team1 wins!';
+    } else if (team2 > team1) {
+        lastResult.textContent = 'Team2 wins!';
+    }
+
+}
+*/

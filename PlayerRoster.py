@@ -49,7 +49,7 @@ class PlayerRoster():
                 playerValue = int(playerValue)
                 name = [player["first_name"], player["last_name"], player["id"], str(playerValue)]
                 # name = "<option value=" + '"' + player['first_name'] + " " + player['last_name'] + "|" + str(playerValue) + '"' + ">" + player['first_name'] + " "+ player['last_name'] + "</option>"
-                if playerValue > 50:
+                if playerValue > 2050:
                     if position in self.__teamRoster:
                         self.__teamRoster[position].append(name)
                         # print(name)

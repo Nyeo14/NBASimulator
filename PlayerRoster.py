@@ -32,7 +32,6 @@ class PlayerRoster():
 
             for player in playerList["data"]:
                 playerValue = 0
-                #team = player["team"]
                 playerID = player["id"]
                 position = player["position"][:1]
                 if position != "":
@@ -44,7 +43,12 @@ class PlayerRoster():
                     playerValue = playerValue * 1.04
                 elif position == "C":
                     playerValue = playerValue * .8554
-                name = [player["first_name"], player["last_name"], player["id"], playerValue]
+                playerValue += 2000
+                if playerValue > 4000:
+                    playerValue = 4000
+                playerValue = int(playerValue)
+                name = [player["first_name"], player["last_name"], player["id"], str(playerValue)]
+                # name = "<option value=" + '"' + player['first_name'] + " " + player['last_name'] + "|" + str(playerValue) + '"' + ">" + player['first_name'] + " "+ player['last_name'] + "</option>"
                 if playerValue > 50:
                     if position in self.__teamRoster:
                         self.__teamRoster[position].append(name)
@@ -54,9 +58,13 @@ class PlayerRoster():
                         # print(name)
                     #print(self.__teamRoster)
             page += 1   
-        with open('playerRoster.txt', 'w') as outfile:
-          outfile.write(json.dumps(self.__teamRoster))
-        #print(self.__teamRoster)
+
+        for value in self.__teamRoster.values():
+            # value = sorted(value, key=lambda x: x[1])
+            value.sort(key=lambda x: x[1])
+        
+        #with open('playerRoster.txt', 'w') as outfile:
+        #  outfile.write(json.dumps(self.__teamRoster))
         return self.__teamRoster
 
 
@@ -66,7 +74,7 @@ class PlayerRoster():
         statDict = {}
 
         # Getting information from API (MAY NEED TO GET FROM 2017 AS WELL TO ACCOUNT FOR ROOKIES)
-        requestString = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]="
+        requestString = "https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]="
         requestString = requestString + player_id
         # response = requests.get("https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]=448")
         response = requests.get(requestString)
@@ -76,14 +84,14 @@ class PlayerRoster():
         for player in playerStats["data"]:
             statDict[player["player_id"]] = [player["ast"], player["oreb"], player["dreb"], player["stl"], player["blk"], player["turnover"], player["fg_pct"], player["fgm"], player["fga"], player["fg3m"], player["fg3a"], player["fg3_pct"], player["ft_pct"], player["ftm"], player["games_played"]]
 
-        # Calculate overall player value (NEED FUNCTION TO CALCULATE THIS)
+        # Calculate overall player value
         playerValue = self.calculatePlayerValue(statDict)
         
         return int(playerValue)
 
 
 
-    # Calculates a player's overall value
+    # CALCULATES A PLAYER'S OVERALL VALUE
     def calculatePlayerValue(self, statDict):
         leagueAvg2PtPct = .523
         leagueAvg3PtPct = .357
@@ -98,6 +106,6 @@ class PlayerRoster():
             adjfg2m = (1+(fg2_pct - leagueAvg2PtPct)) * fg2m
             adjfg3m = (1+(value[11]-leagueAvg3PtPct)) * value[9]
             adjftm =  (1+(value[12]-leagueAvgFtPct)) * value[13]
-            total = (value[0]*0.75 + value[1]*0.75 + value[2]*0.25 + value[3]*1.25 + value[4] - value[5] + adjfg2m + adjfg3m + adjftm ) * value[14]
+            total = (value[0]*0.75 + value[1]*0.95 + value[2]*0.25 + value[3]*1.25 + value[4] - value[5] + adjfg2m + adjfg3m + adjftm ) * value[14]
 
         return total

@@ -82,8 +82,15 @@ class PlayerRoster():
 
         # Creating a dictionary with simple stats {id: points, assists, rebounds, fg%}
         for player in playerStats["data"]:
+            if player["player_id"] == 115 or player["player_id"] == 27 or player["player_id"] == 424 or player["player_id"] == 17 or player["player_id"] == 357 or player["player_id"] == 274 or player["player_id"] == 237 or player["player_id"] == 467 or player["player_id"] == 192 or player["player_id"] == 57
+                continue
             statDict[player["player_id"]] = [player["ast"], player["oreb"], player["dreb"], player["stl"], player["blk"], player["turnover"], player["fg_pct"], player["fgm"], player["fga"], player["fg3m"], player["fg3a"], player["fg3_pct"], player["ft_pct"], player["ftm"], player["games_played"]]
-
+        
+        modRequestString = "https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]="
+        modRequestString = modRequestString + player_id
+        modResponse = requests.get(modRequestString)
+        modPlayerStats = modResponse.json()
+        
         # Calculate overall player value
         playerValue = self.calculatePlayerValue(statDict)
         

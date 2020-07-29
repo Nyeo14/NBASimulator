@@ -2,7 +2,7 @@
 // Justin Lu
 
 
-// Dropdown usage
+// Handles select interface
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -21,6 +21,52 @@ function filterFunction() {
         }
     }
 }
+
+// Handles filling up select options
+$(document).ready(function(){
+    //All guards
+    let guards = [
+        {"code":"None|0", "name": "--Please choose an option--"}
+    ];
+    // All forwards
+    let forwards = [
+        {"code":"None|0", "name": "--Please choose an option--"}
+    ];
+    // All centers
+    let centers = [
+        {"code":"None|0", "name": "--Please choose an option--"}
+    ];
+// Populate using Jquery --------------------------------------------------------
+    // Handles Team 1/2 guards
+    $('#pg-select').empty();
+    $('#pg2-select').empty();
+    $('#sg-select').empty();
+    $('#sg2-select').empty();
+    $.each(guards, function(i, p) {
+        $('#pg-select').append($('<option></option>').val(p.code).text(p.name));
+        $('#pg2-select').append($('<option></option>').val(p.code).text(p.name));
+        $('#sg-select').append($('<option></option>').val(p.code).text(p.name));
+        $('#sg2-select').append($('<option></option>').val(p.code).text(p.name));
+    });
+    // Handles Team 1/2 forwards
+    $('#sf-select').empty();
+    $('#sf2-select').empty();
+    $('#pf-select').empty();
+    $('#pf2-select').empty();
+    $.each(forwards, function(i, p) {
+        $('#sf-select').append($('<option></option>').val(p.code).text(p.name));
+        $('#sf2-select').append($('<option></option>').val(p.code).text(p.name));
+        $('#pf-select').append($('<option></option>').val(p.code).text(p.name));
+        $('#pf2-select').append($('<option></option>').val(p.code).text(p.name));
+    });
+    // Handles Team 1/2 centers
+    $('#c-select').empty();
+    $('#c2-select').empty();
+    $.each(centers, function(i, p) {
+        $('#c-select').append($('<option></option>').val(p.code).text(p.name));
+        $('#c2-select').append($('<option></option>').val(p.code).text(p.name));
+    });
+});
 
 // Function used to retrieve all user input values
 // And then determine which team wins
@@ -78,3 +124,6 @@ function calculate() {
     }
     return false;
 }
+
+
+

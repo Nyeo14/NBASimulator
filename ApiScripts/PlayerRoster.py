@@ -20,7 +20,7 @@ class PlayerRoster():
         numPages = meta["total_pages"]
 
         # Adds players to dictionary {position: [[first name, last name, id, value]]
-        while page <= 3:
+        while page <= numPages:
             valueDict = {}
             newLink = linkStart + str(page) + linkEnd
 

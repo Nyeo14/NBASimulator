@@ -10,4 +10,4 @@ Back end:
 UI:
   Done in HTML,CSS, and JS.
 
-To run simply download the HTML, CSS, and JS files in the UI folder and then run it with the HTML file.
+To run, download the HTML, CSS, and JS files in the UI folder and then run it with the HTML file.

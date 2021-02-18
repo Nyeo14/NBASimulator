@@ -74,50 +74,29 @@ class PlayerRoster():
 
         # Creating a dictionary with players' stats {id: ast, oreb, dreb, stl, blk, turnover, fgpct, fgm, fga, fg3m, fg3a, fg3pct, ftpct, ftm, gamesplayed}
         for player in playerStats["data"]:
-            #115 = Stephen Curry, 27 = Lonzo, 424 = JR Smith, 17 = Carmelo Anthony, 357 = Victor Oladipo, 274 = Kawhi Leonard, 237 = Lebron James, 467 = John Wall, 192 = James Harden, 57 = Devin Booker
-            if player["player_id"] in [115, 27, 424, 17, 357, 274, 237, 467, 192, 57]:
-                insertData = False
-                modRequestString = "https://www.balldontlie.io/api/v1/season_averages?season="
-                modRequestString2 = "&player_ids[]="
-                modRequestStringYear = 0
-                if player["player_id"] == 115:
-                    modRequestStringYear = 2015
-                    insertData = True
-                elif player["player_id"] == 27:
-                    modRequestStringYear = 2019
-                    insertData = True
-                elif player["player_id"] == 424:
-                    modRequestStringYear = 2012
-                    insertData = True
-                elif player["player_id"] == 17:
-                    modRequestStringYear = 2012
-                    insertData = True
-                elif player["player_id"] == 357:
-                    modRequestStringYear = 2017
-                    insertData = True
-                elif player["player_id"] == 274:
-                    modRequestStringYear = 2018
-                    insertData = True
-                elif player["player_id"] == 237:
-                    modRequestStringYear = 2012
-                    insertData = True
-                elif player["player_id"] == 467:
-                    modRequestStringYear = 2016
-                    insertData = True
-                elif player["player_id"] == 192:
-                    modRequestStringYear = 2018
-                    insertData = True
-                elif player["player_id"] == 52:
-                    modRequestStringYear = 2018
-                    insertData = True
-                if insertData:
-                    modRequestString = modRequestString + str(modRequestStringYear) + modRequestString2 + str(player["player_id"])
-                    modResponse = requests.get(modRequestString)
-                    modPlayerStats = modResponse.json()
-                    player = modPlayerStats["data"][0]
-                    statDict[player["player_id"]] = [player["ast"], player["oreb"], player["dreb"], player["stl"], player["blk"], player["turnover"], player["fg_pct"], player["fgm"], player["fga"], player["fg3m"], player["fg3a"], player["fg3_pct"], player["ft_pct"], player["ftm"], player["games_played"]]
+            # statAdjust = {player id:year} - Adjusting the year for specific players due to injury/other reasons
+            # 115 = Stephen Curry, 27 = Lonzo, 424 = JR Smith, 17 = Carmelo Anthony, 357 = Victor Oladipo, 274 = Kawhi Leonard, 
+            # 237 = Lebron James, 467 = John Wall, 192 = James Harden, 57 = Devin Booker
+            statAdjust = {115:2015, 27:2019, 424:2012, 17:2012, 357:2017, 274:2018, 
+                          237:2012, 467:2016, 192:2018, 57:2018}
+            if player["player_id"] in statAdjust:
+                modRequestStringYear = statAdjust[player["player_id"]]
+                modRequestString = ("https://www.balldontlie.io/api/v1/season_averages?season=" 
+                                   + str(modRequestStringYear) + "&player_ids[]=" + str(player["player_id"]))
+                modResponse = requests.get(modRequestString)
+                modPlayerStats = modResponse.json()
+                player = modPlayerStats["data"][0]
+                statDict[player["player_id"]] = [player["ast"], player["oreb"], player["dreb"], 
+                                                player["stl"], player["blk"], player["turnover"], 
+                                                player["fg_pct"], player["fgm"], player["fga"], 
+                                                player["fg3m"], player["fg3a"], player["fg3_pct"], 
+                                                player["ft_pct"], player["ftm"], player["games_played"]]
                 continue
-            statDict[player["player_id"]] = [player["ast"], player["oreb"], player["dreb"], player["stl"], player["blk"], player["turnover"], player["fg_pct"], player["fgm"], player["fga"], player["fg3m"], player["fg3a"], player["fg3_pct"], player["ft_pct"], player["ftm"], player["games_played"]]
+            statDict[player["player_id"]] = [player["ast"], player["oreb"], player["dreb"], 
+                                            player["stl"], player["blk"], player["turnover"], 
+                                            player["fg_pct"], player["fgm"], player["fga"], 
+                                            player["fg3m"], player["fg3a"], player["fg3_pct"], 
+                                            player["ft_pct"], player["ftm"], player["games_played"]]
         playerValue = self.calculatePlayerValue(statDict)
         return int(playerValue)
 
